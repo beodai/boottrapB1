@@ -1,0 +1,96 @@
+.bg-wrapper {
+  background: linear-gradient(to bottom, #366dab 20%, #aac3e0 20%);
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.input-form {
+  background-color: #ffffff;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.input {
+  background-color: #acd0ee;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Data Grid Styles */
+.data-grid-container {
+  background-color: #ffffff;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.toolbar {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.toolbar label {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+  color: #495057;
+}
+
+.table-responsive {
+  margin-top: 10px;
+}
+
+.data-grid-container table {
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+.data-grid-container thead {
+  background-color: #5b9bd5;
+  color: white;
+}
+
+.data-grid-container thead th {
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+  padding: 8px 6px;
+  white-space: nowrap;
+  border-color: #4a8bc2;
+}
+
+.data-grid-container tbody td {
+  padding: 6px 8px;
+  vertical-align: middle;
+  border-color: #dee2e6;
+}
+
+.data-grid-container tbody tr:hover {
+  background-color: #e3f2fd;
+}
+
+.pagination-info {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #dee2e6;
+}
+
+.pagination-info p {
+  margin-bottom: 0;
+}
+
+/* Action Buttons */
+.data-grid-container .btn-edit,
+.data-grid-container .btn-delete {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+}
+
+.data-grid-container tbody td:last-child {
+  white-space: nowrap;
+  text-align: center;
+}

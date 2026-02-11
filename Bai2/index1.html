@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index1.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-wrapper">
+    <form class="input-form">
+      <h5 style="margin-bottom: 30px; margin-left: 10px">XXXX</h5>
+      <div class="input">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <div class="row align-items-center gx-2">
+                <label class="col-sm-2 col-form-label">XXXX</label>
+                <div class="col-sm-4">
+                  <input
+                    type="date"
+                    id="dateFrom"
+                    class="form-control form-control-sm"
+                    value=""
+                  />
+                </div>
+                <div class="col-lg-auto col-md-auto col-sm-12 text-center px-1">
+                  ～
+                </div>
+                <div class="col-sm-4">
+                  <input
+                    type="date"
+                    id="dateTo"
+                    class="form-control form-control-sm"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center gx-sm-3 gx-md-0">
+                <label class="col-sm-2 col-form-label">XX</label>
+                <div class="col-lg-auto col-md-auto col-sm-12">
+                  <select
+                    id="locationCodeSelect"
+                    class="form-select form-select-sm"
+                  >
+                    <option selected></option>
+                  </select>
+                </div>
+                <div class="col-md-7 col-sm-12">
+                  <input
+                    type="text"
+                    id="locationName"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center gx-sm-3 gx-md-0">
+                <label class="col-sm-2 col-form-label">XX</label>
+                <div class="col-lg-auto col-md-auto col-sm-12">
+                  <select
+                    id="labelCodeSelect"
+                    class="form-select form-select-sm"
+                  >
+                    <option selected></option>
+                  </select>
+                </div>
+                <div class="col-md-7 col-sm-12">
+                  <input
+                    type="text"
+                    id="labelName"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center gx-sm-3 gx-md-0">
+                <label class="col-sm-2 col-form-label">XXX</label>
+                <div class="col-lg-auto col-md-auto col-sm-12">
+                  <select
+                    id="productCodeSelect"
+                    class="form-select form-select-sm"
+                  >
+                    <option selected></option>
+                  </select>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                  <input
+                    type="text"
+                    id="productName"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <div class="row align-items-center gx-sm-3 gx-md-0">
+                <label class="col-auto col-form-label pe-3">XXXX</label>
+                <div class="col-lg-auto col-md-auto col-sm-12">
+                  <select id="lotCodeSelect" class="form-select form-select-sm">
+                    <option selected></option>
+                  </select>
+                </div>
+                <div class="col-md-2 col-sm-12">
+                  <input
+                    type="text"
+                    id="lotNumber"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+                <label class="col-auto col-form-label px-3">XXXX</label>
+                <div class="col-lg-auto col-md-auto col-sm-12">
+                  <select
+                    id="orderCodeSelect"
+                    class="form-select form-select-sm"
+                  >
+                    <option selected></option>
+                  </select>
+                </div>
+                <div class="col-md-2 col-sm-12">
+                  <input
+                    type="text"
+                    id="orderNumber"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center gx-sm-3 gx-md-0">
+                <label class="col-lg-0 col-sm-2 col-form-label">XXXX</label>
+                <div class="col-lg-auto col-md-auto col-sm-12">
+                  <select
+                    id="materialCodeSelect"
+                    class="form-select form-select-sm"
+                  >
+                    <option selected></option>
+                  </select>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                  <input
+                    type="text"
+                    id="materialName"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center gx-sm-3 gx-md-0">
+                <label class="col-lg-0 col-sm-2 col-form-label">XX</label>
+                <div class="col-lg-auto col-md-auto col-sm-12">
+                  <select
+                    id="warehouseCodeSelect"
+                    class="form-select form-select-sm"
+                  >
+                    <option selected></option>
+                  </select>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                  <input
+                    type="text"
+                    id="warehouseName"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center gx-sm-3 gx-md-0">
+                <label class="col-auto col-form-label pe-3">XXXX</label>
+                <div class="col-md-4 col-sm-12">
+                  <input
+                    type="text"
+                    id="weight"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+                <label class="col-auto col-form-label px-2">XXXXXX</label>
+                <div class="col-md-3 col-sm-12">
+                  <input
+                    type="text"
+                    id="specValue"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <div class="row align-items-center">
+                <label class="col-md-2 col-form-label">XXXXXX</label>
+                <div class="col-md-10 ps-4">
+                  <input
+                    type="text"
+                    id="stockLocation"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <label class="col-md-2 col-form-label">XXXXX</label>
+                <div class="col-md-10 ps-4">
+                  <input
+                    type="text"
+                    id="notes"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center gx-sm-3 gx-md-0">
+                <label class="col-lg-0 col-sm-2 col-form-label pe-2">XX</label>
+                <div class="col-lg-auto col-md-auto col-sm-12 ps-2">
+                  <select
+                    id="personCodeSelect"
+                    class="form-select form-select-sm"
+                  >
+                    <option selected></option>
+                  </select>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                  <input
+                    type="text"
+                    id="personName"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12 text-end">
+          <button type="button" id="submitBtn" class="btn btn-primary btn-sm">
+            Lưu
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="data-grid-container">
+      <div class="toolbar">
+        <div class="row align-items-center">
+          <div class="col-md-6 col-sm-12 mb-2 mb-md-0">
+            <div class="d-flex align-items-center">
+              <label class="me-2 text-nowrap">エントリ表示</label>
+              <select
+                id="pageSizeSelect"
+                class="form-select form-select-sm"
+                style="width: auto"
+              >
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="d-flex align-items-center justify-content-md-end">
+              <label class="me-2 text-nowrap">検索中時間:</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                style="max-width: 200px"
+                placeholder="検索..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-sm table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>XXXX</th>
+              <th>XXXXXXXX</th>
+              <th>XXXXXXXX</th>
+              <th>XXXXXX</th>
+              <th>XXXX</th>
+              <th>XXXX</th>
+              <th>XXXX</th>
+              <th>XXXX</th>
+              <th>XXXX</th>
+              <th>XXX</th>
+              <th>XXXXX</th>
+              <th>XX</th>
+              <th>XXX</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="dataTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Controls -->
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <div id="paginationInfo" class="text-muted small">
+          Showing 0 records
+        </div>
+        <nav aria-label="Page navigation">
+          <ul id="paginationControls" class="pagination pagination-sm mb-0">
+            <!-- Pagination buttons will be generated here -->
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwxkmHJy5FjL+jlyT2bRjXh0JMhjY6hW+ALEwIHlyYhkKsCCk5NM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index1.js"></script>
+  </body>
+</html>
