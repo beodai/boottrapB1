@@ -13,14 +13,22 @@
     />
   </head>
   <body class="bg-wrapper">
+    <!-- Validation Toast -->
+    <div id="validationToast">
+      <span class="toast-icon">⚠️</span>
+      <span>Form chưa hợp lệ. Vui lòng kiểm tra lại các trường bắt buộc.</span>
+    </div>
+
     <form class="input-form">
       <h5 style="margin-bottom: 30px; margin-left: 10px">XXXX</h5>
       <div class="input">
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12">
-              <div class="row align-items-center gx-2">
-                <label class="col-sm-2 col-form-label">XXXX</label>
+              <div class="row align-items-center gx-2" id="dateGroup">
+                <label class="col-sm-2 col-form-label"
+                  >XXXX<span class="text-danger">*</span></label
+                >
                 <div class="col-sm-4">
                   <input
                     type="date"
@@ -40,9 +48,12 @@
                     value=""
                   />
                 </div>
+                <span class="field-error-msg col-12 ps-2">Bắt buộc nhập</span>
               </div>
               <div class="row align-items-center gx-sm-3 gx-md-0">
-                <label class="col-sm-2 col-form-label">XX</label>
+                <label class="col-sm-2 col-form-label"
+                  >XX<span class="text-danger">*</span></label
+                >
                 <div class="col-lg-auto col-md-auto col-sm-12">
                   <select
                     id="locationCodeSelect"
@@ -51,12 +62,13 @@
                     <option selected></option>
                   </select>
                 </div>
-                <div class="col-md-7 col-sm-12">
+                <div class="col-md-7 col-sm-12" id="locationNameGroup">
                   <input
                     type="text"
                     id="locationName"
                     class="form-control form-control-sm"
                   />
+                  <span class="field-error-msg">Bắt buộc nhập</span>
                 </div>
               </div>
               <div class="row align-items-center gx-sm-3 gx-md-0">
@@ -78,7 +90,9 @@
                 </div>
               </div>
               <div class="row align-items-center gx-sm-3 gx-md-0">
-                <label class="col-sm-2 col-form-label">XXX</label>
+                <label class="col-sm-2 col-form-label"
+                  >XXX<span class="text-danger">*</span></label
+                >
                 <div class="col-lg-auto col-md-auto col-sm-12">
                   <select
                     id="productCodeSelect"
@@ -87,12 +101,13 @@
                     <option selected></option>
                   </select>
                 </div>
-                <div class="col-md-8 col-sm-12">
+                <div class="col-md-8 col-sm-12" id="productNameGroup">
                   <input
                     type="text"
                     id="productName"
                     class="form-control form-control-sm"
                   />
+                  <span class="field-error-msg">Bắt buộc nhập</span>
                 </div>
               </div>
             </div>
@@ -205,7 +220,9 @@
                 </div>
               </div>
               <div class="row align-items-center gx-sm-3 gx-md-0">
-                <label class="col-lg-0 col-sm-2 col-form-label pe-2">XX</label>
+                <label class="col-lg-0 col-sm-2 col-form-label pe-2"
+                  >XX<span class="text-danger">*</span></label
+                >
                 <div class="col-lg-auto col-md-auto col-sm-12 ps-2">
                   <select
                     id="personCodeSelect"
@@ -214,12 +231,13 @@
                     <option selected></option>
                   </select>
                 </div>
-                <div class="col-md-8 col-sm-12">
+                <div class="col-md-8 col-sm-12" id="personNameGroup">
                   <input
                     type="text"
                     id="personName"
                     class="form-control form-control-sm"
                   />
+                  <span class="field-error-msg">Bắt buộc nhập</span>
                 </div>
               </div>
             </div>
@@ -259,6 +277,7 @@
               <label class="me-2 text-nowrap">検索中時間:</label>
               <input
                 type="text"
+                id="searchInput"
                 class="form-control form-control-sm"
                 style="max-width: 200px"
                 placeholder="検索..."

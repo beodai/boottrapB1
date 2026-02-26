@@ -3,12 +3,14 @@ const tableBody = document.getElementById("dataTableBody");
 const pageSizeSelect = document.getElementById("pageSizeSelect");
 const paginationInfo = document.getElementById("paginationInfo");
 const paginationControls = document.getElementById("paginationControls");
+const searchInput = document.getElementById("searchInput");
 
 let dataStore = [];
 let nextId = 1;
 let editingId = null;
 let currentPage = 1;
 let pageSize = 5;
+let searchKeyword = "";
 
 const STORAGE_KEY = "tableDataStore";
 
@@ -183,14 +185,25 @@ function parseCombinedDisplay(text) {
     return { code: text, name: text };
 }
 
+function getFilteredData() {
+    if (!searchKeyword.trim()) return dataStore;
+    const kw = searchKeyword.trim().toLowerCase();
+    return dataStore.filter((record) => {
+        return Object.values(record).some((val) =>
+            String(val).toLowerCase().includes(kw)
+        );
+    });
+}
+
 function renderTable() {
     tableBody.innerHTML = "";
 
-    const totalRecords = dataStore.length;
+    const filteredData = getFilteredData();
+    const totalRecords = filteredData.length;
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = Math.min(startIndex + pageSize, totalRecords);
 
-    const pageRecords = dataStore.slice(startIndex, endIndex);
+    const pageRecords = filteredData.slice(startIndex, endIndex);
 
     pageRecords.forEach((record, index) => {
         const actualRowNumber = startIndex + index + 1;
@@ -198,10 +211,10 @@ function renderTable() {
         tableBody.appendChild(row);
     });
 
-    updatePaginationInfo(startIndex + 1, endIndex, totalRecords);
-    renderPaginationControls();
+    updatePaginationInfo(totalRecords > 0 ? startIndex + 1 : 0, endIndex, totalRecords);
+    renderPaginationControlsFiltered(filteredData.length);
 
-    console.log("Table rendered:", dataStore.length, "records");
+    console.log("Table rendered:", filteredData.length, "of", dataStore.length, "records");
 }
 
 function updatePaginationInfo(start, end, total) {
@@ -212,8 +225,7 @@ function updatePaginationInfo(start, end, total) {
     }
 }
 
-function renderPaginationControls() {
-    const totalRecords = dataStore.length;
+function renderPaginationControlsFiltered(totalRecords) {
     const totalPages = Math.ceil(totalRecords / pageSize);
 
     paginationControls.innerHTML = "";
@@ -405,7 +417,49 @@ function attachRowEventListeners(row, recordId) {
     });
 }
 
+const REQUIRED_FIELDS = [
+    { groupId: "dateGroup", checkFn: () => document.getElementById("dateFrom").value || document.getElementById("dateTo").value },
+    { groupId: "locationNameGroup", checkFn: () => document.getElementById("locationName").value.trim() },
+    { groupId: "productNameGroup", checkFn: () => document.getElementById("productName").value.trim() },
+    { groupId: "personNameGroup", checkFn: () => document.getElementById("personName").value.trim() },
+];
+
+function validateForm() {
+    let valid = true;
+    REQUIRED_FIELDS.forEach(({ groupId, checkFn }) => {
+        const group = document.getElementById(groupId);
+        if (!checkFn()) {
+            group.classList.add("field-error");
+            valid = false;
+        } else {
+            group.classList.remove("field-error");
+        }
+    });
+    return valid;
+}
+
+function clearValidationErrors() {
+    REQUIRED_FIELDS.forEach(({ groupId }) => {
+        document.getElementById(groupId).classList.remove("field-error");
+    });
+}
+
+let toastTimer = null;
+function showValidationToast() {
+    const toast = document.getElementById("validationToast");
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
+
 submitBtn.addEventListener("click", function () {
+    if (!validateForm()) {
+        showValidationToast();
+        return;
+    }
+
     const formData = getFormData();
 
     if (editingId) {
@@ -420,6 +474,7 @@ submitBtn.addEventListener("click", function () {
 
     renderTable();
     clearForm();
+    clearValidationErrors();
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -437,6 +492,24 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Application ready!");
     console.log("💾 Data store:", dataStore.length, "records");
     console.log("🔑 Next ID:", nextId);
+
+    // Auto-clear validation errors khi người dùng bắt đầu nhập
+    const autoClearMap = [
+        { inputIds: ["dateFrom", "dateTo"], groupId: "dateGroup" },
+        { inputIds: ["locationName"], groupId: "locationNameGroup" },
+        { inputIds: ["productName"], groupId: "productNameGroup" },
+        { inputIds: ["personName"], groupId: "personNameGroup" },
+    ];
+    autoClearMap.forEach(({ inputIds, groupId }) => {
+        inputIds.forEach((id) => {
+            document.getElementById(id).addEventListener("input", function () {
+                document.getElementById(groupId).classList.remove("field-error");
+            });
+            document.getElementById(id).addEventListener("change", function () {
+                document.getElementById(groupId).classList.remove("field-error");
+            });
+        });
+    });
 });
 
 pageSizeSelect.addEventListener("change", function () {
@@ -444,6 +517,13 @@ pageSizeSelect.addEventListener("change", function () {
     currentPage = 1;
     renderTable();
     console.log("Page size changed to:", pageSize);
+});
+
+searchInput.addEventListener("input", function () {
+    searchKeyword = this.value;
+    currentPage = 1;
+    renderTable();
+    console.log("Search keyword:", searchKeyword);
 });
 
 window.debugDataStore = {
